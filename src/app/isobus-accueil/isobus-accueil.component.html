@@ -1,0 +1,35 @@
+<div class="row ">
+    <div class="col-12 text-center">
+        <h2>Démarrer une session</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 text-center">
+        <a type="button" (click)="newSession()" class="btn btn-success btn-lg btn-block">Démarrer une session de jeu</a>
+    </div>        
+</div>
+<br><br><br>
+<div class="row ">
+    <div class="col-12 text-center">
+        <h2>Rejoindre une session</h2>
+    </div>
+</div>
+<form #formSession="ngForm" (ngSubmit)="joinSessionAccueil(formSession)">
+        <div class="row">
+            <div class="row">  
+                <div class="col-12 text-center">
+                    <label for="nom" style="margin-right: 4px;">Votre nom :</label>
+                    <input type="text" cols="20" id="nom" name="nom" ngModel #nom="ngModel"><br>
+                </div>
+            </div>  
+            <div class="col-12 text-center">
+                <label for="name" style="margin-right: 4px;">Code session :</label>
+                <input type="text" id="codesession" name="codesession" ngModel #codesession="ngModel"><br>
+            </div>
+        </div>
+        <div class="row">  
+            <div class="col-12 text-center">
+                <button type="submit" class="btn btn-success btn-lg btn-block">Rejoindre une session de jeu</button>
+            </div>
+        </div>
+</form>

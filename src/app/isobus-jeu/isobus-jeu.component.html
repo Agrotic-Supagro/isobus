@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4 text-center">
+            Nom : {{CodeSessionService.nom}}
+        </div>
+        <div class="col-4 text-center">
+            Statut : {{statut}}
+        </div>
+        <div class="col-4 text-center" *ngIf="statut == 'joueur'">
+            Code Session : {{numSession}}
+        </div>
+        <div class="col-4 text-center" *ngIf="statut == 'animateur'">
+            Code Animateur : {{CodeSessionService.codeAnimateur}} <br>
+            Code joueur : {{CodeSessionService.codeJoueur}}
+        </div>
+    </div>
+    <br>        
+</div>

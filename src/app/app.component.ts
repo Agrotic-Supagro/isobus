@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { initializeApp } from 'firebase/app';
+import { doc, getDoc, getDocs, getFirestore, collection } from 'firebase/firestore';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +11,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'isobus';
+
+  constructor() {};
+
 }

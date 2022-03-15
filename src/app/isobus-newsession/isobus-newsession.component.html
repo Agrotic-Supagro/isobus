@@ -1,0 +1,30 @@
+<div class="row ">
+    <div class="col-12 text-center">
+        <h2>Créer une session</h2>
+    </div>
+</div>
+<form #formSession="ngForm" (ngSubmit)="joinSessionNew(formSession)">
+    <div class="row">  
+        <div class="col-12 text-center">
+            <label for="nom" style="margin-right: 4px;">Votre nom :</label>
+            <input type="text" cols="20" id="nom" name="nom" ngModel #nom="ngModel"><br>
+        </div>
+    </div>
+    <div class="row">  
+        <div class="col-12 text-center">
+            <label for="codeanimateur" style="margin-right: 4px;">Code animateur :</label>
+            <input type="text" cols="10" id="codeanimateur" name="codeanimateur" ngModel #codeanimateur="ngModel"><br>
+        </div>
+    </div>
+    <div class="row">  
+        <div class="col-12 text-center">
+            <label for="codejoueur" style="margin-right: 4px;">Code joueur :</label>
+            <input type="text" cols="10" id="codejoueur" name="codejoueur" ngModel #codejoueur="ngModel"><br>
+        </div>
+    </div>
+    <div class="row">  
+        <div class="col-12 text-center">
+            <button type="submit" class="btn btn-success btn-lg btn-block">Créer la session de jeu</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,73 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4 text-center">
+            Nom : {{CodeSessionService.nom}}
+        </div>
+        <div class="col-4 text-center">
+            Statut : {{statut}}
+        </div>
+        <div class="col-4 text-center" *ngIf="statut == 'joueur'">
+            Code Session : {{numSession}}
+        </div>
+        <div class="col-4 text-center" *ngIf="statut == 'animateur'">
+            Code Animateur : {{CodeSessionService.codeAnimateur}} <br>
+            Code joueur : {{CodeSessionService.codeJoueur}}
+        </div>
+    </div>
+    <br>
+    <div class="row align-items-center" *ngIf="statut == 'animateur'">        
+        <div class="col-12 text-center"><h2> Choisis ton matériel </h2></div>
+        <br>        
+        <div class="col-3"></div>
+        <div class="col-3 text-center"><button type="button" class="btn btn-outline-primary" (click)="choixMateriel(1)">Tracteur</button></div>
+        <div class="col-3 text-center"><button type="button" class="btn btn-outline-primary" (click)="choixMateriel(0)">Pulvérisateur</button></div>
+        <div class="col-3"></div>    
+    </div>
+    <div class="row align-items-center" *ngIf="statut == 'joueur'">
+        <div class="col-12 text-center"><h2> En attente du démarrage de la session par l'animateur... </h2></div>
+        <div class="col-5"></div> 
+        <div class="col-2 text-center"><img src="../assets/agrotic-waiting.gif" height="50px" width="50px"></div>        
+        <div class="col-5"></div> 
+    </div>
+    <br><br>
+    <div class="container">
+        <form #formrole="ngForm" (ngSubmit)="validateRole(formrole)">
+            <div class="row" *ngIf="statut == 'animateur'">            
+                <div class="col-6">        
+                    <table class="table table-striped">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Liste des joueurs sans rôle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let joueur of IsobusFirebase.listeJoueursSansRole">
+                                <th>{{joueur}}</th> 
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-6">        
+                    <table class="table table-striped">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Role</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let role of listeRole; let index = index">
+                                <th>{{index+1}}- {{role.nameRole}}</th>
+                                <th><select [id]="role.idrole" (change)="selectOnChange(index,$event)">
+                                    <option label="---Choix joueur---"></option>
+                                    <option *ngFor="let joueur of IsobusFirebase.listeJoueurs" [value]="joueur" [selected]="joueur === role.joueur">{{joueur}}</option>
+                                </select></th>                             
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-center" *ngIf="statut == 'animateur'"><button type="submit" class="btn btn-success" [disabled]="nbRoleNonPourvu != 0">Valider les roles et lancer la session</button></div>
+            </div>
+        </form>
+    </div>
+    <br>
+</div>
